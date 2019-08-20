@@ -1,0 +1,14 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "My test website",
+  "main": "main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Mark",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.39.2"
+  }
+}
