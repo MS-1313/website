@@ -27,33 +27,18 @@ function pathFinder(maze) {
     };
 
     const moveOnBoard = (x, y) => {
-        // while (x !== goal || y !== goal) {
-        //     const moveRight = () => x++;
-        //     const moveDown = () => {
-        //         y++;
-        //         x = 0;
-        //     };
-        //
-        //     if (y !== sizeTable) {
-        //         if (table[y][x] === true && x !== sizeTable) {
-        //             moveRight();
-        //         } else {
-        //             moveDown();
-        //         }
-        //     } else {
-        //         return false;
-        //     }
-        // }
 
         if (x === goal && y === goal) {
             result = true;
         } else {
             if (table[y][++x]) {
                 moveOnBoard(x, y);
-            } else if (table[++y][--x]) {
+            } else if (table[y][x] === undefined) {
+                moveOnBoard(x - 2, ++y);
+            } else if (y !== goal && table[++y][--x]) {
                 moveOnBoard(x, y);
             } else {
-                return false;
+                result = false;
             }
         }
 
@@ -65,6 +50,4 @@ function pathFinder(maze) {
     return moveOnBoard(x, y);
 }
 
-console.dir(pathFinder(`.W.
-.W.
-W..`));
+console.log(pathFinder(`...W\n..WW\n..W.\n....`));
